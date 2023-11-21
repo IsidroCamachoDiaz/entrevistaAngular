@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "entrevistas",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ludoteca-9561e": {
+      "hosting": {
+        "entrevistas": [
+          "ludoteca-9561e"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ludoteca-9561e"
+  }
+}

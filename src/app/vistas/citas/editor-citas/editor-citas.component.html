@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title text-center"> Cita Para {{c.nombre}} DNI: {{c.dni}}</h5>
+                    <p class="card-text"><label>Nombre: </label><input type="text" [(ngModel)]="c.nombre"></p>
+                    <p class="card-text"><label>DNI: </label><input type="text" [(ngModel)]="c.dni"></p>
+                    <p class="card-text"><label>Email: </label><input type="text" [(ngModel)]="c.email"></p>
+                    <p class="card-text"><label>Telefono: </label><input type="text" [(ngModel)]="c.telefono"></p>
+                    <p class="card-text"><label>Dia de la Cita </label><input type="date" [(ngModel)]="c.diaCita"></p>
+                    <p class="card-text"><label>Hora de la Cita </label><input type="time" min="10:00" max="14:00" [(ngModel)]="c.horaCita"></p>
+                    <button type="button" class="btn btn-success" (click)="modificarCita()" *ngIf="id">Modificar Cita</button>
+                    <button class="btn btn-info " (click)="meterCita()" style="color:white" *ngIf="!id">Guardar Cita</button>
+                    <button class="btn btn-info " routerLink="/citas/listado" style="color:white">Volver</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
