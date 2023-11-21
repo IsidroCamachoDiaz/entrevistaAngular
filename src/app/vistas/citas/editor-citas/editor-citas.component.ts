@@ -10,7 +10,7 @@ import { BaseDeDatosService } from 'src/app/servicios/base-de-datos.service';
 })
 export class EditorCitasComponent{
 constructor(private fbs:BaseDeDatosService,public ruta:ActivatedRoute){}
-c:Cita={nombre:"manolo",telefono:"5783478",email:"uirhgugwb",dni:"urightg",visto:false,diaCita:"3-4-2023",horaCita:"10:35",entrevistador:"A"};
+c:Cita={nombre:"",telefono:"",email:"",dni:"",visto:false,diaCita:"",horaCita:"",entrevistador:"A"};
 id?:string;
 ngOnInit(){
   if(this.ruta.snapshot.paramMap.get("id")){
