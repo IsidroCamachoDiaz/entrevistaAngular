@@ -11,6 +11,7 @@
                     <p class="card-text"><label>Telefono: </label><input type="text" [(ngModel)]="c.telefono"></p>
                     <p class="card-text"><label>Dia de la Cita </label><input type="date" [(ngModel)]="c.diaCita"></p>
                     <p class="card-text"><label>Hora de la Cita </label><input type="time" min="10:00" max="14:00" [(ngModel)]="c.horaCita"></p>
+                    <p class="card-text"><label>Se ha entrevistado </label><input type="checkbox" [(ngModel)]="c.visto"></p>
                     <button type="button" class="btn btn-success" (click)="modificarCita()" *ngIf="id">Modificar Cita</button>
                     <button class="btn btn-info " (click)="meterCita()" style="color:white" *ngIf="!id">Guardar Cita</button>
                     <button class="btn btn-info " routerLink="/citas/listado" style="color:white">Volver</button>

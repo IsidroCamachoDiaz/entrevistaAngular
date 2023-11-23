@@ -5,6 +5,7 @@ import { AgendasRoutingModule } from './agendas-routing.module';
 import { AgendasComponent } from './agendas.component';
 import { ListadoAgendasComponent } from '../listado-agendas/listado-agendas.component';
 import { EditorAgendasComponent } from '../editor-agendas/editor-agendas.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { EditorAgendasComponent } from '../editor-agendas/editor-agendas.compone
   ],
   imports: [
     CommonModule,
-    AgendasRoutingModule
+    AgendasRoutingModule,
+    FormsModule
   ]
 })
 export class AgendasModule { }

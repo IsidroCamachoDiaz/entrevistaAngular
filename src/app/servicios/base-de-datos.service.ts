@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, addDoc, collection, collectionData, deleteDoc, doc, docData, query, updateDoc, where } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, doc,deleteDoc, docData, query, updateDoc, where } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -35,10 +35,12 @@ export class BaseDeDatosService {
   }
 
   //Actualizar un documento Update
-  updateDocument(doc:any,coleccion:string){
-    const coleccionRef=doc(this.fbs,`${coleccion}/${doc.id}`);
-    return updateDoc(coleccionRef,doc);
+  updateDocument(doc1:any,coleccion:string){
+    const coleccionRef=doc(this.fbs,`${coleccion}/${doc1.id}`);
+    return updateDoc(coleccionRef,doc1);
   }
+
+
   //Borrar un documento Delete
   deleteDoc(id:string,coleccion:string){
     const refDocumnet=doc(this.fbs,`${coleccion}/${id}`);
