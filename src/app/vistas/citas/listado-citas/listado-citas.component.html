@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-4" *ngFor="let c of citas;let i=index">
+    <div class="col-12 col-md-6 col-lg-4" *ngFor="let c of citas;let i=index">
       <div class="card bg-success " style="width: 18rem;" *ngIf="c.visto">
         <div class="card-body">
           <h5 class="card-title">Cita {{i+1}}:</h5>
@@ -8,7 +8,7 @@
           <p class="card-text">Tiene cita para el dia {{c.diaCita}} a las {{c.horaCita}}</p>
           <p class="card-text">Contacto: Email: {{c.email}} DNI: {{c.dni}} Telefono: {{c.telefono}}</p>
           <a routerLink="/citas/modificar/{{c.id}}" class="card-link">Modificar Cita</a>
-          <a (click)="borrarCita(c)" class="card-link">Eliminar Cita</a>
+          <a (click)="borrarCita(c)" class="card-link text-danger">Eliminar Cita</a>
         </div>
       </div>
       <div class="card bg-warning" style="width: 18rem;" *ngIf="!c.visto">
@@ -18,12 +18,12 @@
           <p class="card-text">Tiene cita para el dia {{c.diaCita}} a las {{c.horaCita}}</p>
           <p class="card-text">Contacto: Email: {{c.email}} DNI: {{c.dni}} Telefono: {{c.telefono}}</p>
           <a routerLink="/citas/modificar/{{c.id}}" class="card-link">Modificar Cita</a>
-          <a (click)="borrarCita(c)" class="card-link">Eliminar Cita</a>
+          <a (click)="borrarCita(c)" class="card-link text-danger">Eliminar Cita</a>
         </div>
       </div>
     </div>
     <div class="col-12 text-center"><button type="button" class="btn btn-success" (click)="vistos()">Ya Vistos</button> 
-      <button type="button" class="btn btn-warning" (click)="pendientes()">Pendientes</button>
+      <button type="button" class="btn btn-warning text-white" (click)="pendientes()">Pendientes</button>
       <button type="button" class="btn btn-primary" (click)="todos()">Todas</button>
     </div>
   </div>

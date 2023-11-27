@@ -27,6 +27,16 @@ export class BaseDeDatosService {
     const queryRef=query(coleccionRef,where(campo,"==",valor))
     return collectionData(queryRef,{idField:"id"})as Observable<any[]>;
   }
+  queyCollectionMayor(coleccion:string,campo:string,valor:any){
+    const coleccionRef=collection(this.fbs,coleccion);
+    const queryRef=query(coleccionRef,where(campo,">=",valor))
+    return collectionData(queryRef,{idField:"id"})as Observable<any[]>;
+  }
+  queyCollectionMenor(coleccion:string,campo:string,valor:any){
+    const coleccionRef=collection(this.fbs,coleccion);
+    const queryRef=query(coleccionRef,where(campo,"<",valor))
+    return collectionData(queryRef,{idField:"id"})as Observable<any[]>;
+  }
 
   //Crea un nuevo documento Set
   newDocument(doc:any,coleccion:string){

@@ -1,0 +1,9 @@
+select{
+    width: 250px;
+}
+a{
+    margin: 10px;
+}
+.card{
+    background: linear-gradient(to bottom, #34b4db, #ffffff);
+}

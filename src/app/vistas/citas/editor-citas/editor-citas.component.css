@@ -1,0 +1,12 @@
+select{
+    margin-left: 10px;
+}
+.card{
+    background: linear-gradient(to bottom, #34b4db, #ffffff);
+}
+button{
+    margin: 10px;
+}
+input{
+    margin-left: 10px;
+}

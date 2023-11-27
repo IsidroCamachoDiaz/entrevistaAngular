@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Agenda } from 'src/app/modelo/Agenda';
 import { Cita } from 'src/app/modelo/Cita';
 import { BaseDeDatosService } from 'src/app/servicios/base-de-datos.service';
@@ -10,7 +10,8 @@ import { BaseDeDatosService } from 'src/app/servicios/base-de-datos.service';
   styleUrls: ['./editor-agendas.component.css']
 })
 export class EditorAgendasComponent implements OnInit {
-  constructor(private fbs:BaseDeDatosService,public ruta:ActivatedRoute){}
+
+  constructor(private fbs:BaseDeDatosService,public ruta:ActivatedRoute,private router: Router){}
   citasNoVistas:Cita[]=[];
   agenda:Agenda={diaAgenda:"",horaAgenda:"",};
   id!:string;
@@ -24,5 +25,12 @@ export class EditorAgendasComponent implements OnInit {
     }
 
   }
-
+  modificarAgenda() {
+    this.fbs.updateDocument(this.agenda,"agendas");
+    this.router.navigateByUrl("/agendas/listado");
+  }
+  crearAgenda() {
+    this.fbs.newDocument(this.agenda,"agendas");
+    this.router.navigateByUrl("/agendas/listado");
+  }
 }

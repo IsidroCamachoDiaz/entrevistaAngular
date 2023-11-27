@@ -8,17 +8,43 @@ import { BaseDeDatosService } from 'src/app/servicios/base-de-datos.service';
   templateUrl: './listado-agendas.component.html',
   styleUrls: ['./listado-agendas.component.css']
 })
-export class ListadoAgendasComponent implements OnInit{
-  
-constructor(private fbs: BaseDeDatosService){}
-agendas:Agenda[]=[];
-c1:Cita={nombre:"manolo",telefono:"5783478",email:"uirhgugwb",dni:"urightg",visto:true,diaCita:"3-4-2023",horaCita:"10:35",entrevistador:"A"};
-a:Agenda={diaAgenda:"irfg",horaAgenda:"uhgbf",cita1:this.c1,cita2:this.c1};
+export class ListadoAgendasComponent implements OnInit {
+
+  constructor(private fbs: BaseDeDatosService) { }
+  agendas: Agenda[] = [];
+
   ngOnInit(): void {
-    this.fbs.getColletion("agendas").subscribe(data=> this.agendas=data);
+    this.fbs.getColletion("agendas").subscribe(data => this.agendas = data);
   }
 
-  meterAgenda(){
-    this.fbs.newDocument(this.a,"agendas");
+  borrarAgenda(a: Agenda) {
+    this.fbs.deleteDoc(a.id!, "agendas");
+  }
+  agendasPendientes() {
+    const miFecha: Date = new Date();
+
+    const anyo: number = miFecha.getFullYear();
+    const mes: number = miFecha.getMonth() + 1;
+    const dia: number = miFecha.getDate();
+
+    const cadenaFecha: string = `${anyo}-${mes.toString().padStart(2, '0')}-${dia.toString().padStart(2, '0')}`;
+
+    console.log(cadenaFecha);
+    this.fbs.queyCollectionMayor("agendas", "diaAgenda", cadenaFecha).subscribe(data => this.agendas = data);
+  }
+  agendasFinalizadas(){
+    const miFecha: Date = new Date();
+
+    const anyo: number = miFecha.getFullYear();
+    const mes: number = miFecha.getMonth() + 1;
+    const dia: number = miFecha.getDate();
+
+    const cadenaFecha: string = `${anyo}-${mes.toString().padStart(2, '0')}-${dia.toString().padStart(2, '0')}`;
+
+    console.log(cadenaFecha);
+    this.fbs.queyCollectionMenor("agendas", "diaAgenda", cadenaFecha).subscribe(data => this.agendas = data);
+  }
+  todasAgendas(){
+    this.fbs.getColletion("agendas").subscribe(data=>this.agendas=data);
   }
 }

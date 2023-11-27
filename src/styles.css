@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    background-image: url('https://www.bizneo.com/blog/wp-content/uploads/2018/02/tipos-de-entrevista-de-trabajo.jpg'); /* Ruta de la imagen */
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    color: white; /* Color del texto, ajusta según sea necesario */
+    font-family: Arial, sans-serif; /* Tipo de fuente, ajusta según sea necesario */
+}
+.nav-link{
+    color: black;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 20px;
+}
