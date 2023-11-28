@@ -13,8 +13,10 @@ export class EditorAgendasComponent implements OnInit {
 
   constructor(private fbs:BaseDeDatosService,public ruta:ActivatedRoute,private router: Router){}
   citasNoVistas:Cita[]=[];
-  agenda:Agenda={diaAgenda:"",horaAgenda:"",};
+  agenda:Agenda={diaAgenda:"",citas:[]};
   id!:string;
+  cAnadir:Cita={nombre:"",telefono:"",email:"",dni:"",visto:false,diaCita:"",horaCita:"",entrevistador:"A"};
+  citasParaAnadir:Cita[]=[];
   ngOnInit(): void {
     
     this.fbs.queyCollection("citas","visto",false).subscribe(data=>this.citasNoVistas=data);
@@ -26,11 +28,26 @@ export class EditorAgendasComponent implements OnInit {
 
   }
   modificarAgenda() {
+    //----------------Control de Citas
+    this.agenda.citas.push(...this.citasParaAnadir);
+    //---------------------------------------------
     this.fbs.updateDocument(this.agenda,"agendas");
     this.router.navigateByUrl("/agendas/listado");
   }
   crearAgenda() {
+    //----------------Control de Citas
+    this.agenda.citas.push(...this.citasParaAnadir);
+    //---------------------------------------------
     this.fbs.newDocument(this.agenda,"agendas");
     this.router.navigateByUrl("/agendas/listado");
+  }
+
+  //--------------------------------------- Control de Citas
+  eliminarCitaAgenda(iCita:number){
+    this.agenda.citas.slice(iCita,1)
+  }
+  anadirCita(){
+    this.citasParaAnadir.push(this.cAnadir);
+    alert("Se añado "+this.citasParaAnadir.length+" citas pendientes")
   }
 }

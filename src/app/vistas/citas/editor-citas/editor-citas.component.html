@@ -12,19 +12,29 @@
                     <p class="card-text"><label>Telefono: </label><input type="text" [(ngModel)]="c.telefono" size="16">
                     </p>
                     <p class="card-text"><label>Dia de la Cita </label><input type="date" [(ngModel)]="c.diaCita"></p>
-                    <p class="card-text"><label>Hora de la Cita </label><input type="time" min="10:00" max="14:00"
-                            [(ngModel)]="c.horaCita"></p>
+                    <p class="card-text"><label>Hora de la Cita </label>
+                        <select [(ngModel)]="c.horaCita">
+                            <option [ngValue]="'10:00'">10:00</option>
+                            <option [ngValue]="'10:30'">10:30</option>
+                            <option [ngValue]="'11:00'">11:00</option>
+                            <option [ngValue]="'11:30'">11:30</option>
+                            <option [ngValue]="'12:00'">12:00</option>
+                            <option [ngValue]="'12:30'">12:30</option>
+                            <option [ngValue]="'13:00'">13:00</option>
+                            <option [ngValue]="'13:30'">13:30</option>
+                        </select>
+                    </p>
                     <p class="card-text"><label>Se ha entrevistado </label><input type="checkbox" [(ngModel)]="c.visto">
                     </p>
                     <p class="card-text"><label>Entrevistador </label>
                         <select [(ngModel)]="c.entrevistador">
-                            <option [ngValue]="entrevistadorA">Entrevistador A</option>
-                            <option [ngValue]="entrevistadorB">Entrevistador B</option>
+                            <option [ngValue]="'A'">Entrevistador A</option>
+                            <option [ngValue]="'B'">Entrevistador B</option>
                         </select>
                     </p>
                     <button type="button" class="btn btn-success" (click)="modificarCita()" *ngIf="id">Modificar
                         Cita</button>
-                    <button class="btn btn-info " (click)="meterCita()" style="color:white" *ngIf="!id" routerLink="/citas/listado" >Guardar
+                    <button class="btn btn-info " (click)="meterCita()" style="color:white" *ngIf="!id" >Guardar
                         Cita</button>
                     <button class="btn btn-danger " routerLink="/citas/listado" style="color:white">Cancelar</button>
                 </div>

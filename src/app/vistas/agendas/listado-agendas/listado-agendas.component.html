@@ -4,11 +4,10 @@
             <div class="card bg-info" style="width: 18rem;">
                 <div class="card-body">
                   <h5 class="card-title">Agenda {{i+1}}:</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Agenda del dia {{a.diaAgenda}} a las {{a.horaAgenda}}</h6>
-                  <p class="card-text" *ngIf="a.cita1">Cita 1: Para {{a.cita1.nombre}} con DNI {{a.cita1.dni}} tiene cita a las {{a.cita1.horaCita}} Telefono de Contacto: {{a.cita1.telefono}} Lo ve El Inspector {{a.cita1.entrevistador}}</p>
-                  <p class="card-text" *ngIf="a.cita2">Cita 2: Para {{a.cita2.nombre}} con DNI {{a.cita2.dni}} tiene cita a las {{a.cita2.horaCita}} Telefono de Contacto: {{a.cita2.telefono}} Lo ve El Inspector {{a.cita2.entrevistador}}</p>
-                  <p class="card-text" *ngIf="a.cita3">Cita 3: Para {{a.cita3.nombre}} con DNI {{a.cita3.dni}} tiene cita a las {{a.cita3.horaCita}} Telefono de Contacto: {{a.cita3.telefono}} Lo ve El Inspector {{a.cita3.entrevistador}}</p>
-                  <p class="card-text" *ngIf="a.cita4">Cita 4: Para {{a.cita4.nombre}} con DNI {{a.cita4.dni}} tiene cita a las {{a.cita4.horaCita}} Telefono de Contacto: {{a.cita4.telefono}} Lo ve El Inspector {{a.cita4.entrevistador}}</p>
+                  <h6 class="card-subtitle mb-2 text-muted">Agenda del dia {{a.diaAgenda}}</h6>
+                  <div *ngFor="let c of a.citas;let i=index;">
+                    <p class="card-text">Cita {{i+1}}: Para {{c.nombre}} con DNI {{c.dni}} tiene cita a las {{c.horaCita}} Telefono de Contacto: {{c.telefono}} Lo ve El Inspector {{c.entrevistador}}</p>
+                  </div>
                   <p class="card-text"><a routerLink="/agendas/editor-agenda/{{a.id}}" class="card-link">Modificar Agenda</a></p>
                   <p class="card-text"><a class="card-link text-danger" (click)="borrarAgenda(a)">Eliminar Agenda</a></p>
                 </div>

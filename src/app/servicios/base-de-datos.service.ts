@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, addDoc, collection, collectionData, doc,deleteDoc, docData, query, updateDoc, where } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, doc,deleteDoc, docData, query, updateDoc, where, QueryConstraint } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -27,6 +27,14 @@ export class BaseDeDatosService {
     const queryRef=query(coleccionRef,where(campo,"==",valor))
     return collectionData(queryRef,{idField:"id"})as Observable<any[]>;
   }
+  queyCollection2campos(coleccion:string,campo:string,valor:any,campo2:string,valor2:any){
+    const coleccionRef=collection(this.fbs,coleccion);
+    const wa:QueryConstraint[] = [where(campo,"==",valor),where(campo2,"==",valor2)];
+    //operador rest añade las variables como tal y no como campos
+    const queryRef=query(coleccionRef,...wa);
+    return collectionData(queryRef,{idField:"id"})as Observable<any[]>;
+  }
+  
   queyCollectionMayor(coleccion:string,campo:string,valor:any){
     const coleccionRef=collection(this.fbs,coleccion);
     const queryRef=query(coleccionRef,where(campo,">=",valor))

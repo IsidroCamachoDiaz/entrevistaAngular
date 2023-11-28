@@ -7,3 +7,6 @@ a{
 .card{
     background: linear-gradient(to bottom, #34b4db, #ffffff);
 }
+button{
+    margin-top: 10px;
+}
