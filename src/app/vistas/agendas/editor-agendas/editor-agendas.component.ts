@@ -44,7 +44,9 @@ export class EditorAgendasComponent implements OnInit {
 
   //--------------------------------------- Control de Citas
   eliminarCitaAgenda(iCita:number){
-    this.agenda.citas.slice(iCita,1)
+    console.log(iCita);
+    this.agenda.citas=this.agenda.citas.splice(iCita,1);
+    this.fbs.updateDocument(this.agenda,"agendas");
   }
   anadirCita(){
     this.citasParaAnadir.push(this.cAnadir);

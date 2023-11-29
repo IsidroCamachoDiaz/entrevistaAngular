@@ -27,6 +27,11 @@ export class BaseDeDatosService {
     const queryRef=query(coleccionRef,where(campo,"==",valor))
     return collectionData(queryRef,{idField:"id"})as Observable<any[]>;
   }
+  queyDocument(coleccion:string,campo:string,valor:any){
+    const coleccionRef=collection(this.fbs,coleccion);
+    const queryRef=query(coleccionRef,where(campo,"==",valor))
+    return collectionData(queryRef,{idField:"id"})as Observable<any>;
+  }
   queyCollection2campos(coleccion:string,campo:string,valor:any,campo2:string,valor2:any){
     const coleccionRef=collection(this.fbs,coleccion);
     const wa:QueryConstraint[] = [where(campo,"==",valor),where(campo2,"==",valor2)];
