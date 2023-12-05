@@ -10,6 +10,7 @@
                   </div>
                   <p class="card-text"><a routerLink="/agendas/editor-agenda/{{a.id}}" class="card-link">Modificar Agenda</a></p>
                   <p class="card-text"><a class="card-link text-danger" (click)="borrarAgenda(a)">Eliminar Agenda</a></p>
+                  <p class="card-text"><a class="card-link text-success" (click)="generarPDF(a)">Descargar Agenda</a></p>
                 </div>
               </div>
         </div>

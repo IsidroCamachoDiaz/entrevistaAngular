@@ -12,7 +12,7 @@
               <select [(ngModel)]="agenda.citas[i]">
                 <option *ngFor="let c of citasNoVistas" [ngValue]="c">Cita de {{c.nombre}} el dia {{c.diaCita}}</option>
               </select>
-              <button class="btn btn-danger" (click)="eliminarCitaAgenda(i)">Eliminar Cita de la agenda</button>
+              <button class="btn btn-danger" (click)="eliminarCitaAgenda(i,c1)">Eliminar Cita de la agenda</button>
             </p>
           </div>
           <p class="card-text">Añadir Cita: 
@@ -23,22 +23,6 @@
           </p>
         </div>
 
-        <!--<p class="card-text">Cita 2: 
-                    <select  [(ngModel)]="agenda.cita2">
-                        <option *ngFor="let c of citasNoVistas" [ngValue]="c">Cita de {{c.nombre}} el dia {{c.diaCita}}</option>
-                  </select>
-                  </p>
-                  <p class="card-text">Cita 3: 
-                    <select  [(ngModel)]="agenda.cita3">
-                        <option *ngFor="let c of citasNoVistas" [ngValue]="c">Cita de {{c.nombre}} el dia {{c.diaCita}}</option>
-                  </select>
-                  </p>
-                  <p class="card-text">Cita 4: 
-                    <select  [(ngModel)]="agenda.cita4">
-                        <option *ngFor="let c of citasNoVistas" [ngValue]="c">Cita de {{c.nombre}} el dia {{c.diaCita}}</option>
-                  </select>
-
-                  </p>-->
         <a *ngIf="!id" class="btn btn-primary" (click)="crearAgenda()">Crear Agenda</a>
         <a *ngIf="id" class="btn btn-primary" (click)="modificarAgenda()">Modificar Agenda</a>
         <a href="/agendas/listado" class="btn btn-danger">Cancelar</a>

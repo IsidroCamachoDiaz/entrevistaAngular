@@ -6,6 +6,7 @@ import { CitasComponent } from './citas.component';
 import { ListadoCitasComponent } from '../listado-citas/listado-citas.component';
 import { EditorCitasComponent } from '../editor-citas/editor-citas.component';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     CitasRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class CitasModule { }
