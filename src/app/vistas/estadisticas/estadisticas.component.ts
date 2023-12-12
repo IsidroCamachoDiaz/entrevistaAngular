@@ -28,7 +28,7 @@ export class EstadisticasComponent implements OnInit{
       for(let i=0;i<this.agendas.length;i++){
         dias.push(this.agendas[i].diaAgenda);
         citasDia.push(String(this.agendas[i].citas.length));
-          colores.push(coloresRandon[this.numeroRandom(0,19)])
+        colores.push(coloresRandon[this.numeroRandom(0,19)])
       }
       this.chart = new Chart("myChart", {
         type: 'doughnut', //this denotes tha type of chart
