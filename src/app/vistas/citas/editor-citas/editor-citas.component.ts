@@ -28,7 +28,7 @@ export class EditorCitasComponent {
   c: Cita = { nombre: "", telefono: "", email: "", dni: "", visto: false, diaCita: "", horaCita: "", entrevistador: "A" };
   id?: string;
   cAntigua:Cita={ nombre: "", telefono: "", email: "", dni: "", visto: false, diaCita: "", horaCita: "", entrevistador: "A" };
-  agendaParaMeterCita: Agenda = { diaAgenda: "", citas: [] };
+  agendaParaMeterCita: Agenda = { id:"",diaAgenda: "", citas: [] };
   diaAntiguo:string="";
   
   ngOnInit() {
@@ -65,11 +65,18 @@ export class EditorCitasComponent {
           this.agendaParaMeterCita = data[0];
           o.unsubscribe()
           console.log(data[0]);
+          if(this.agendaParaMeterCita=== undefined|| this.agendaParaMeterCita === null){
+            this.agendaParaMeterCita= { id:"",diaAgenda: "", citas: [] };
+            this.agendaParaMeterCita.diaAgenda=this.c.diaCita;
+            this.agendaParaMeterCita.citas.push(this.c);
+            this.fbs.newDocument(this.agendaParaMeterCita,"agendas");
+          }
+          else{
           this.agendaParaMeterCita.citas.push(this.c);
           this.fbs.updateDocument(this.agendaParaMeterCita, "agendas").then(() => {
-            this.fbs.updateDocument(this.c, "citas");
-            this.router.navigateByUrl("/citas/listado");
+            this.fbs.updateDocument(this.c, "citas");         
           });
+        }
         })
         this.fbs.newDocument(this.c, "citas");
         this.router.navigateByUrl("/citas/listado");
@@ -113,11 +120,21 @@ export class EditorCitasComponent {
           this.agendaParaMeterCita = data[0];
           o.unsubscribe()
           console.log(data[0]);
-          this.agendaParaMeterCita.citas.push(this.c);
-          this.fbs.updateDocument(this.agendaParaMeterCita, "agendas").then(() => {
-            this.fbs.updateDocument(this.c, "citas");
-            this.router.navigateByUrl("/citas/listado");
-          });
+          if(this.agendaParaMeterCita=== undefined|| this.agendaParaMeterCita === null){
+            this.agendaParaMeterCita= { id:"",diaAgenda: "", citas: [] };
+            this.agendaParaMeterCita.diaAgenda=this.c.diaCita;
+            this.agendaParaMeterCita.citas.push(this.c);
+            this.fbs.newDocument(this.agendaParaMeterCita,"agendas").then(() => {
+              this.fbs.updateDocument(this.c, "citas");
+            });
+          }
+          else{
+            this.agendaParaMeterCita.citas.push(this.c);
+            this.fbs.updateDocument(this.agendaParaMeterCita, "agendas").then(() => {
+              this.fbs.updateDocument(this.c, "citas");
+            });
+          }
+          this.router.navigateByUrl("/citas/listado");
         })
 
       } else {

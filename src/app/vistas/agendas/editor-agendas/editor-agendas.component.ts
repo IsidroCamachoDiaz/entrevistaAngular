@@ -38,8 +38,18 @@ export class EditorAgendasComponent implements OnInit {
     //----------------Control de Citas
     this.agenda.citas.push(...this.citasParaAnadir);
     //---------------------------------------------
-    this.fbs.newDocument(this.agenda,"agendas");
-    this.router.navigateByUrl("/agendas/listado");
+   let d= this.fbs.queyCollection("agendas","diaAgenda",this.agenda.diaAgenda).subscribe(data=>{
+      let agendaEnBD:Agenda=data[0];
+      if(agendaEnBD===undefined||agendaEnBD===null){
+        this.fbs.newDocument(this.agenda,"agendas");
+        this.router.navigateByUrl("/agendas/listado");
+      }
+      else{
+        alert("Ya existe una agenda para esa Fecha")
+      }
+      d.unsubscribe();
+    })
+    
   }
 
   //--------------------------------------- Control de Citas

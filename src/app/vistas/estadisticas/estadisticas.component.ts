@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Chart from "chart.js/auto";
 import { Agenda } from 'src/app/modelo/Agenda';
 import { BaseDeDatosService } from 'src/app/servicios/base-de-datos.service';
+
 @Component({
   selector: 'app-estadisticas',
   templateUrl: './estadisticas.component.html',
@@ -50,6 +51,7 @@ export class EstadisticasComponent implements OnInit{
         }
       });
     });
+
   }
   //---------------------------------------------------------------------------------------
   numeroRandom(min:number, max:number) {

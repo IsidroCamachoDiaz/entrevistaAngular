@@ -14,7 +14,7 @@
       <div class="card bg-warning" style="width: 18rem;" *ngIf="!c.visto">
         <div class="card-body">
           <h5 class="card-title">Cita {{i+1}}:</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Cita para: {{c.nombre}} No se ha visto </h6>
+          <h6 class="card-subtitle mb-2 text-muted">Cita para: {{c.nombre}} No se ha visto</h6>
           <p class="card-text">Tiene cita para el dia {{c.diaCita}} a las {{c.horaCita}}</p>
           <p class="card-text">Contacto: Email: {{c.email}} DNI: {{c.dni}} Telefono: {{c.telefono}}</p>
           <a routerLink="/citas/modificar/{{c.id}}" class="card-link">Modificar Cita</a>
